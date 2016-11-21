@@ -72,8 +72,9 @@ var DateTimePickerComponent = (function () {
         enumerable: true,
         configurable: true
     });
-    DateTimePickerComponent.prototype.initDateTime = function (date) {
-        date = date || new Date();
+    DateTimePickerComponent.prototype.initDateTime = function (date, defaultValue) {
+        defaultValue = defaultValue || new Date();
+        date = date || defaultValue;
         this.selectedDate = date;
         this.hour = this.selectedDate.getHours();
         this.minute = this.selectedDate.getMinutes();
