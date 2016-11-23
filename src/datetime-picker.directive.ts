@@ -158,7 +158,8 @@ export class DateTimePickerDirective implements OnInit, OnChanges {
     
     //Hack not to fire tab keyup event
     this.justShown = true;
-    setTimeout(() => this.justShown = false, 100);
+    // we have .3s effect about showing datepicker
+    setTimeout(() => this.justShown = false, 400);
   }
 
   hideDatetimePicker = (event?):void => {

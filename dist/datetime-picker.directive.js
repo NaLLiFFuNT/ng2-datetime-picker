@@ -141,7 +141,8 @@ var DateTimePickerDirective = (function () {
         });
         //Hack not to fire tab keyup event
         this.justShown = true;
-        setTimeout(function () { return _this.justShown = false; }, 100);
+        // we have .3s effect about showing datepicker
+        setTimeout(function () { return _this.justShown = false; }, 400);
     };
     DateTimePickerDirective.prototype.elementIn = function (el, containerEl) {
         while (el = el.parentNode) {
