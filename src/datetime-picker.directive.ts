@@ -181,7 +181,7 @@ export class DateTimePickerDirective implements OnInit, OnChanges {
   };
 
   private keyEventListener = (e:KeyboardEvent):void => {
-    if (e.keyCode === 27 || e.keyCode === 13) { //ESC, ENTER keys
+    if (e.keyCode === 27 || e.keyCode === 9 || e.keyCode === 13) { //ESC, TAB, ENTER keys
       if (!this.justShown) {
         this.hideDatetimePicker();
       }
