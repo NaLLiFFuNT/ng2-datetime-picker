@@ -478,7 +478,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            }
 	        };
 	        this.keyEventListener = function (e) {
-	            if (e.keyCode === 27 || e.keyCode === 9 || e.keyCode === 13) {
+	            if (e.keyCode === 27 || e.keyCode === 13) {
 	                if (!_this.justShown) {
 	                    _this.hideDatetimePicker();
 	                }
