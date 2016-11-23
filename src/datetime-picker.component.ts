@@ -19,16 +19,16 @@ import {DateTime} from './datetime';
   providers    : [DateTime],
   selector     : 'datetime-picker',
   template     : `
-<div class="datetime-picker" tabindex="0">
+<div class="datetime-picker">
 
   <!-- Month - Year  -->
   <div class="month">
-    <button type="button" class="prev" (click)="updateMonthData(-1)">&laquo;</button>
+    <div type="button" class="prev" (click)="updateMonthData(-1)">&laquo;</div>
      <span title="{{dateTime.months[monthData.month]?.fullName}}">
            {{dateTime.months[monthData.month]?.shortName}}
      </span>
     {{monthData.year}}
-    <button type="button" class="next" (click)="updateMonthData(+1)">&raquo;</button>
+    <div type="button" class="next" (click)="updateMonthData(+1)">&raquo;</div>
   </div>
 
   <div class="days">
