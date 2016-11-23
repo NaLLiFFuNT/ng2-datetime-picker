@@ -71,6 +71,7 @@ export class DateTimePickerDirective implements OnInit, OnChanges {
     // add a click listener to document, so that it can hide when others clicked
     document.body.addEventListener('click', this.hideDatetimePicker);
     this.el.addEventListener('keyup', this.keyEventListener);
+    this.el.addEventListener('keydown', this.keyDownEventListener);
     setTimeout( () => { // after [(ngModel)] is applied
       this.valueChanged(this.el.value);
       if(this.ctrl) {
@@ -144,6 +145,7 @@ export class DateTimePickerDirective implements OnInit, OnChanges {
     this.componentRef   = this.viewContainerRef.createComponent(factory);
     this.datetimePickerEl = this.componentRef.location.nativeElement;
     this.datetimePickerEl.addEventListener('keyup', this.keyEventListener);
+    this.datetimePickerEl.addEventListener('keydown', this.keyDownEventListener);
 
     let component = this.componentRef.instance;
     component.initDateTime(<Date>this.el['dateValue'], this.defaultValue);
@@ -179,9 +181,18 @@ export class DateTimePickerDirective implements OnInit, OnChanges {
       event && event.stopPropagation();
     }
   };
+  
+  
+  private keyDownEventListener = (e:KeyboardEvent):void => {
+    if (e.keyCode === 9) { //TAB keys
+      if (!this.justShown) {
+        this.hideDatetimePicker();
+      }
+    }
+  };
 
   private keyEventListener = (e:KeyboardEvent):void => {
-    if (e.keyCode === 27 || e.keyCode === 9 || e.keyCode === 13) { //ESC, TAB, ENTER keys
+    if (e.keyCode === 27 || e.keyCode === 13) { //ESC, ENTER keys
       if (!this.justShown) {
         this.hideDatetimePicker();
       }

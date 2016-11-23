@@ -477,8 +477,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	                event && event.stopPropagation();
 	            }
 	        };
+	        this.keyDownEventListener = function (e) {
+	            if (e.keyCode === 9) {
+	                if (!_this.justShown) {
+	                    _this.hideDatetimePicker();
+	                }
+	            }
+	        };
 	        this.keyEventListener = function (e) {
-	            if (e.keyCode === 27 || e.keyCode === 9 || e.keyCode === 13) {
+	            if (e.keyCode === 27 || e.keyCode === 13) {
 	                if (!_this.justShown) {
 	                    _this.hideDatetimePicker();
 	                }
@@ -503,6 +510,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        // add a click listener to document, so that it can hide when others clicked
 	        document.body.addEventListener('click', this.hideDatetimePicker);
 	        this.el.addEventListener('keyup', this.keyEventListener);
+	        this.el.addEventListener('keydown', this.keyDownEventListener);
 	        setTimeout(function () {
 	            _this.valueChanged(_this.el.value);
 	            if (_this.ctrl) {
@@ -554,6 +562,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.componentRef = this.viewContainerRef.createComponent(factory);
 	        this.datetimePickerEl = this.componentRef.location.nativeElement;
 	        this.datetimePickerEl.addEventListener('keyup', this.keyEventListener);
+	        this.datetimePickerEl.addEventListener('keydown', this.keyDownEventListener);
 	        var component = this.componentRef.instance;
 	        component.initDateTime(this.el['dateValue'], this.defaultValue);
 	        component.dateOnly = this.dateOnly;

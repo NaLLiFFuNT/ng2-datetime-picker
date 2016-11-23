@@ -29,6 +29,7 @@ export declare class DateTimePickerDirective implements OnInit, OnChanges {
     valueChanged: (date: string | Date) => void;
     showDatetimePicker(event?: any): void;
     hideDatetimePicker: (event?: any) => void;
+    private keyDownEventListener;
     private keyEventListener;
     private elementIn(el, containerEl);
     private styleDatetimePicker();
