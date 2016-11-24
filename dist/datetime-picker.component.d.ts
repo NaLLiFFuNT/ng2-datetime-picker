@@ -15,6 +15,7 @@ export declare class DateTimePickerComponent implements AfterViewInit {
     minute: number;
     el: HTMLElement;
     monthData: any;
+    timeFormat: string;
     changes: EventEmitter<any>;
     closing: EventEmitter<any>;
     private _hours;
@@ -24,6 +25,7 @@ export declare class DateTimePickerComponent implements AfterViewInit {
     readonly year: number;
     readonly month: number;
     readonly day: number;
+    readonly formattedTime: string;
     readonly today: Date;
     initDateTime(date: Date, defaultValue: Date): void;
     toDate(year: number, month: number, day: number): Date;

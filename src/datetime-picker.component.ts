@@ -78,7 +78,7 @@ import {DateTime} from './datetime';
   <div class="days" id="time" *ngIf="!dateOnly">
     <label class="timeLabel">Time:</label>
     <span class="timeValue">
-      {{("0"+hour).slice(-2)}} : {{("0"+minute).slice(-2)}}
+      {{formattedTime}}
     </span><br/>
     <label class="hourLabel">Hour:</label>
     <input #hours class="hourInput"
@@ -219,6 +219,7 @@ export class DateTimePickerComponent implements AfterViewInit {
 
   public el:HTMLElement; // this component element
   public monthData:any;  // month calendar data
+  public timeFormat: string;
 
   public changes:EventEmitter<any> = new EventEmitter();
   public closing:EventEmitter<any> = new EventEmitter();
@@ -259,6 +260,10 @@ export class DateTimePickerComponent implements AfterViewInit {
 
   public get day ():number {
     return this.selectedDate.getDate();
+  }
+  
+  public get formattedTime(): string {
+    return DateTime.momentFormatDate(this.selectedDate, this.timeFormat);
   }
 
   public get today ():Date {

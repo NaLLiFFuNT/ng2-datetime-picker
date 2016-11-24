@@ -8,6 +8,7 @@ export declare class DateTimePickerDirective implements OnInit, OnChanges {
     private viewContainerRef;
     private parent;
     dateFormat: string;
+    timeFormat: string;
     dateOnly: boolean;
     closeOnSelect: string;
     defaultValue: Date;

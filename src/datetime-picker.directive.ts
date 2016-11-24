@@ -30,6 +30,7 @@ import {DateTime} from './datetime';
 })
 export class DateTimePickerDirective implements OnInit, OnChanges {
   @Input('date-format')     dateFormat:string;
+  @Input('time-format')     timeFormat:string = 'HH:mm';
   @Input('date-only')       dateOnly:boolean;
   @Input('close-on-select') closeOnSelect:string;
   @Input('default-value')   defaultValue:Date;
@@ -150,6 +151,7 @@ export class DateTimePickerDirective implements OnInit, OnChanges {
     let component = this.componentRef.instance;
     component.initDateTime(<Date>this.el['dateValue'], this.defaultValue);
     component.dateOnly = this.dateOnly;
+    component.timeFormat = this.timeFormat;
 
     this.styleDatetimePicker();
 

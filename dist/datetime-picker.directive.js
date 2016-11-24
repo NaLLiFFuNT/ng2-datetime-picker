@@ -24,6 +24,7 @@ var DateTimePickerDirective = (function () {
         this.resolver = resolver;
         this.viewContainerRef = viewContainerRef;
         this.parent = parent;
+        this.timeFormat = 'HH:mm';
         this.ngModelChange = new core_1.EventEmitter();
         /* input element string value is changed */
         this.valueChanged = function (date) {
@@ -143,6 +144,7 @@ var DateTimePickerDirective = (function () {
         var component = this.componentRef.instance;
         component.initDateTime(this.el['dateValue'], this.defaultValue);
         component.dateOnly = this.dateOnly;
+        component.timeFormat = this.timeFormat;
         this.styleDatetimePicker();
         component.changes.subscribe(this.valueChanged);
         component.closing.subscribe(function () {
@@ -220,6 +222,10 @@ var DateTimePickerDirective = (function () {
         core_1.Input('date-format'), 
         __metadata('design:type', String)
     ], DateTimePickerDirective.prototype, "dateFormat", void 0);
+    __decorate([
+        core_1.Input('time-format'), 
+        __metadata('design:type', String)
+    ], DateTimePickerDirective.prototype, "timeFormat", void 0);
     __decorate([
         core_1.Input('date-only'), 
         __metadata('design:type', Boolean)
