@@ -30,6 +30,7 @@ export declare class DateTimePickerComponent implements AfterViewInit {
     initDateTime(date: Date, defaultValue: Date): void;
     toDate(year: number, month: number, day: number): Date;
     toDateOnly(date: Date): Date;
+    updateTime(): void;
     /**
      * set the selected date and close it when closeOnSelect is true
      * @param date {Date}

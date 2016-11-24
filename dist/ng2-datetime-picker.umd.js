@@ -325,10 +325,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	                e.stopPropagation();
 	            });
 	            this._hours.nativeElement.addEventListener('input', function (e) {
-	                _this.selectDate();
+	                _this.updateTime();
 	            });
 	            this._minutes.nativeElement.addEventListener('input', function (e) {
-	                _this.selectDate();
+	                _this.updateTime();
 	            });
 	        }
 	    };
@@ -391,6 +391,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    DateTimePickerComponent.prototype.toDateOnly = function (date) {
 	        return new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0, 0);
 	    };
+	    DateTimePickerComponent.prototype.updateTime = function () {
+	        this.selectedDate.setHours(parseInt('' + this.hour || '0', 10));
+	        this.selectedDate.setMinutes(parseInt('' + this.minute || '0', 10));
+	    };
 	    /**
 	     * set the selected date and close it when closeOnSelect is true
 	     * @param date {Date}
@@ -399,8 +403,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (dayNum) {
 	            this.selectedDate = new Date(this.monthData.year, this.monthData.month, dayNum);
 	        }
-	        this.selectedDate.setHours(parseInt('' + this.hour || '0', 10));
-	        this.selectedDate.setMinutes(parseInt('' + this.minute || '0', 10));
+	        this.updateTime();
 	        this.changes.emit(this.selectedDate);
 	        this.closing.emit(true);
 	    };

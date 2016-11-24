@@ -248,10 +248,10 @@ export class DateTimePickerComponent implements AfterViewInit {
         e.stopPropagation();
       });
       this._hours.nativeElement.addEventListener('input', (e:KeyboardEvent) => {
-        this.selectDate();
+        this.updateTime();
       });
       this._minutes.nativeElement.addEventListener('input', (e:KeyboardEvent) => {
-        this.selectDate();
+        this.updateTime();
       });
     }
   }
@@ -301,6 +301,11 @@ export class DateTimePickerComponent implements AfterViewInit {
   public toDateOnly (date:Date) {
     return new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0, 0);
   }
+  
+  public updateTime() {
+    this.selectedDate.setHours(parseInt( ''+this.hour || '0', 10));
+    this.selectedDate.setMinutes(parseInt( ''+this.minute|| '0', 10));
+  }
 
   /**
    * set the selected date and close it when closeOnSelect is true
@@ -310,8 +315,7 @@ export class DateTimePickerComponent implements AfterViewInit {
     if (dayNum) {
       this.selectedDate = new Date(this.monthData.year, this.monthData.month, dayNum);
     }
-    this.selectedDate.setHours(parseInt( ''+this.hour || '0', 10));
-    this.selectedDate.setMinutes(parseInt( ''+this.minute|| '0', 10));
+    this.updateTime();
     this.changes.emit(this.selectedDate);
     this.closing.emit(true);
   };
