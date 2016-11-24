@@ -310,6 +310,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.el = elementRef.nativeElement;
 	    }
 	    DateTimePickerComponent.prototype.ngAfterViewInit = function () {
+	        var _this = this;
 	        if (!this.dateOnly) {
 	            this._hours.nativeElement.addEventListener('keyup', function (e) {
 	                e.stopPropagation();
@@ -322,6 +323,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	            });
 	            this._minutes.nativeElement.addEventListener('mousedown', function (e) {
 	                e.stopPropagation();
+	            });
+	            this._hours.nativeElement.addEventListener('input', function (e) {
+	                _this.selectDate();
+	            });
+	            this._minutes.nativeElement.addEventListener('input', function (e) {
+	                _this.selectDate();
 	            });
 	        }
 	    };

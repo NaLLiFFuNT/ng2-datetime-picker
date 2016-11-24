@@ -247,6 +247,12 @@ export class DateTimePickerComponent implements AfterViewInit {
       this._minutes.nativeElement.addEventListener('mousedown', (e:KeyboardEvent) => {
         e.stopPropagation();
       });
+      this._hours.nativeElement.addEventListener('input', (e:KeyboardEvent) => {
+        this.selectDate();
+      });
+      this._minutes.nativeElement.addEventListener('input', (e:KeyboardEvent) => {
+        this.selectDate();
+      });
     }
   }
 
