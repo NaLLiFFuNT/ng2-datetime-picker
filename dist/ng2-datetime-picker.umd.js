@@ -361,10 +361,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    DateTimePickerComponent.prototype.initDateTime = function (date, defaultValue) {
 	        defaultValue = defaultValue || new Date();
 	        date = date || defaultValue;
-	        this.selectedDate = date;
-	        this.hour = this.selectedDate.getHours();
-	        this.minute = this.selectedDate.getMinutes();
-	        this.monthData = this.dateTime.getMonthData(this.year, this.month);
+	        if (date instanceof Date) {
+	            this.selectedDate = date;
+	            this.hour = this.selectedDate.getHours();
+	            this.minute = this.selectedDate.getMinutes();
+	            this.monthData = this.dateTime.getMonthData(this.year, this.month);
+	        }
+	        else {
+	            console.warn('Invalid date', date);
+	        }
 	    };
 	    DateTimePickerComponent.prototype.toDate = function (year, month, day) {
 	        return new Date(year, month, day);
