@@ -75,7 +75,7 @@ var DateTimePickerComponent = (function () {
     DateTimePickerComponent.prototype.initDateTime = function (date, defaultValue) {
         defaultValue = defaultValue || new Date();
         date = date || defaultValue;
-        if (date instanceof Date) {
+        if (date.toJSON() !== null) {
             this.selectedDate = date;
             this.hour = this.selectedDate.getHours();
             this.minute = this.selectedDate.getMinutes();
