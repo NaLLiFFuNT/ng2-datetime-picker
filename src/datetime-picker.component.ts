@@ -42,7 +42,7 @@ import {DateTime} from './datetime';
     </div>
 
     <!-- Fill up blank days for this month -->
-    <div *ngIf="monthData.leadingDays.length < 7">
+    <div *ngIf="monthData?.leadingDays?.length < 7">
       <div class="day" *ngFor="let dayNum of monthData.leadingDays"
            [ngClass]="{weekend: [0,6].indexOf(toDate(monthData.year, monthData.month-1, dayNum).getDay()) !== -1}">
         {{dayNum}}
@@ -65,7 +65,7 @@ import {DateTime} from './datetime';
     </div>
 
     <!-- Fill up blank days for this month -->
-    <div *ngIf="monthData.trailingDays.length < 7">
+    <div *ngIf="monthData?.trailingDays?.length < 7">
       <div class="day"
            *ngFor="let dayNum of monthData.trailingDays"
            [ngClass]="{weekend: [0,6].indexOf(toDate(monthData.year, monthData.month+1, dayNum).getDay()) !== -1}">
