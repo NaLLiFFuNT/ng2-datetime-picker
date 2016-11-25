@@ -377,12 +377,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	        date = date || defaultValue;
 	        if (date.toJSON() !== null) {
 	            this.selectedDate = date;
-	            this.hour = this.selectedDate.getHours();
-	            this.minute = this.selectedDate.getMinutes();
 	        }
 	        else {
 	            console.warn('Invalid date', date);
 	        }
+	        if (!this.selectedDate) {
+	            this.selectedDate = defaultValue;
+	        }
+	        this.hour = this.selectedDate.getHours();
+	        this.minute = this.selectedDate.getMinutes();
 	        this.monthData = this.dateTime.getMonthData(this.year, this.month);
 	    };
 	    DateTimePickerComponent.prototype.toDate = function (year, month, day) {
