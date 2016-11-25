@@ -379,11 +379,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	            this.selectedDate = date;
 	            this.hour = this.selectedDate.getHours();
 	            this.minute = this.selectedDate.getMinutes();
-	            this.monthData = this.dateTime.getMonthData(this.year, this.month);
 	        }
 	        else {
 	            console.warn('Invalid date', date);
 	        }
+	        this.monthData = this.dateTime.getMonthData(this.year, this.month);
 	    };
 	    DateTimePickerComponent.prototype.toDate = function (year, month, day) {
 	        return new Date(year, month, day);

@@ -288,10 +288,10 @@ export class DateTimePickerComponent implements AfterViewInit {
       this.selectedDate = date;
       this.hour = this.selectedDate.getHours();
       this.minute = this.selectedDate.getMinutes();
-      this.monthData = this.dateTime.getMonthData(this.year, this.month);
     } else {
       console.warn('Invalid date', date);
     }
+    this.monthData = this.dateTime.getMonthData(this.year, this.month);
   }
 
   public toDate (year:number, month:number, day:number):Date {
